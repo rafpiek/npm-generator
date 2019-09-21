@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "bin": {
+    "generate": "./index.js"
+  },
+  "dependencies": {
+    "inquirer": "^7.0.0"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "nodemon": "^1.19.2"
+  }
+}
