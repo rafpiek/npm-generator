@@ -6,8 +6,8 @@
     "generate": "./index.js"
   },
   "dependencies": {
-    "fs-extra": "^8.1.0",
-    "inquirer": "^7.0.0"
+    "inquirer": "^7.0.0",
+    "rimraf": "^3.0.0"
   },
   "devDependencies": {
     "chalk": "^2.4.2",
