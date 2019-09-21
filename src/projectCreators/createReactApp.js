@@ -1,8 +1,11 @@
 const createProject = require("../utils/createProject");
-const fs = require("fs");
+const logger = require("../logger");
+const rimraf = require("rimraf");
 
 module.exports = (projectName, templatePath, projectPath) => {
   const command = `create-react-app ${projectName}`;
-  const callback = () => {};
+  const callback = () => {
+    rimraf.sync(`${projectPath}/src`);
+  };
   createProject(projectName, templatePath, projectPath, command, callback);
 };
