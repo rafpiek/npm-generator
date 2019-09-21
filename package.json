@@ -1,4 +1,6 @@
 {
+  "name" "NPM Generator",
+  "version": "0.0.1",
   "scripts": {
     "start": "nodemon index.js"
   },
