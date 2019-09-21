@@ -6,8 +6,29 @@ module.exports = {
   },
   createReactApp: {
     name: "create-react-app",
-    dependencies: ["react-router-dom"],
-    devDependencies: ["axios"]
+    dependencies: [
+      "axios",
+      "dotenv",
+      "history",
+      "i18next",
+      "keymirror",
+      "localforage",
+      "node-sass",
+      "react-app-rewire-styled-components",
+      "react-app-rewired",
+      "react-redux",
+      "redux",
+      "redux-persist",
+      "redux-thunk",
+      "styled-components",
+      "uuid",
+      "react-router-dom"
+    ],
+    devDependencies: [
+      "babel-plugin-styled-components",
+      "redux-devtools-extension",
+      "redux-logger"
+    ]
   },
   reactNativeInit: {
     name: "react-native-init",
