@@ -4,7 +4,7 @@ const spawn = require("child_process").spawn;
 const logger = require("../logger");
 const utils = require("../utils");
 const projectTypes = require("../projectTypes");
-
+const rimraf = require("rimraf");
 module.exports = (
   projectName,
   templatePath,
@@ -21,6 +21,7 @@ module.exports = (
     } else {
       logger("error", error);
       logger("error", stderr);
+      rimraf.sync(projectPath);
     }
   });
 };
