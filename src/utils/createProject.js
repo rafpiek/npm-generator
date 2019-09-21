@@ -5,10 +5,17 @@ const logger = require("../logger");
 const utils = require("../utils");
 const projectTypes = require("../projectTypes");
 
-module.exports = (projectName, templatePath, projectPath, command) => {
+module.exports = (
+  projectName,
+  templatePath,
+  projectPath,
+  command,
+  callback
+) => {
   exec(command, (error, stdout, stderr) => {
     logger("info", stdout);
     if (!error) {
+      callback();
       utils.createProjectContents(templatePath, projectPath);
       installDependencies(projectPath);
     } else {
