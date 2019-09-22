@@ -6,7 +6,7 @@ module.exports = (projectName, templatePath, projectPath) => {
   const command = `react-native`;
   const args = ['init', projectName];
   const callback = () => {
-    console.log('React native init callback');
+    rimraf.sync(`${projectPath}/src`);
   };
   createProject(
     projectName,

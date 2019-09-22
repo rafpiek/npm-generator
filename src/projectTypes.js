@@ -27,7 +27,9 @@ module.exports = {
     devDependencies: [
       'babel-plugin-styled-components',
       'redux-devtools-extension',
-      'redux-logger'
+      'redux-logger',
+      'eslint',
+      'eslint-plugin-react'
     ]
   },
   reactNativeInit: {
@@ -40,9 +42,20 @@ module.exports = {
       'redux',
       'react-redux',
       'redux-persist',
-      'redux-thunk'
+      'redux-thunk',
+      '@babel/preset-env',
+      'i18next',
+      'babel-plugin-module-resolver',
+      'prop-types',
+      'react-navigation-stack',
+      'react-native-reanimated',
+      'react-native-screens@^1.0.0-alpha.2'
     ],
-    devDependencies: ['redux-logger', 'redux-devtools-extension']
+    devDependencies: [
+      'redux-logger',
+      'redux-devtools-extension',
+      '@babel/plugin-proposal-class-properties'
+    ]
   },
   vue: {
     name: 'vue',
