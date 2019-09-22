@@ -16,10 +16,7 @@ module.exports = (
   args = null
 ) => {
   let creator = null;
-  logger('info', args);
-  logger('info', command);
   if (args) {
-    logger('info', 'here');
     creator = spawn(command, args);
   }
 
@@ -29,43 +26,22 @@ module.exports = (
   creator.stderr.on('data', data => {
     logger('warning', data);
   });
-  creator.on('close', data => {
-    logger('warning', 'Close: ' + data);
-  });
   creator.on('disconnect', data => {
     logger('warning', 'Disconnect: ' + data);
-  });
-  creator.on('message', data => {
-    logger('warning', data);
   });
   creator.on('error', error => {
     logger('error', error);
     rimraf.sync(projectPath);
   });
   creator.on('exit', data => {
-    logger('info', 'Exit: + ' + data.toString());
+    logger('success', 'Exit: + ' + data.toString());
     callback();
     utils.createProjectContents(templatePath, projectPath);
-    logger('error', projectChoice);
     installDependencies(projectPath, projectChoice);
   });
-
-  // exec(command, (error, stdout, stderr) => {
-  //   logger("info", stdout);
-  //   if (!error) {
-  //     callback();
-  //     utils.createProjectContents(templatePath, projectPath);
-  //     installDependencies(projectPath);
-  //   } else {
-  //     logger("error", error);
-  //     logger("error", stderr);
-  //     rimraf.sync(projectPath);
-  //   }
-  // });
 };
 
 function installDependencies(projectPath, projectName) {
-  logger('success', projectName);
   logger('info', 'Installing dependencies. Please wait...');
   exec(
     `npm --prefix ${projectPath} install -s ${projectTypes[
@@ -75,8 +51,8 @@ function installDependencies(projectPath, projectName) {
       if (error) {
         logger('error', error);
       } else {
-        logger('info', stdout);
-        logger('info', stderr);
+        logger('success', stdout);
+        logger('warning', stderr);
         installDevDependencies(projectPath, projectName);
       }
     }
@@ -94,8 +70,8 @@ function installDevDependencies(projectPath, projectName) {
       if (error) {
         logger('error', error);
       } else {
-        logger('info', stdout);
-        logger('info', stderr);
+        logger('success', stdout);
+        logger('warning', stderr);
         spawn(process.env.SHELL, { cwd: projectPath, stdio: 'inherit' });
         logger('success', 'Project setup finished! ENJOY!');
       }
