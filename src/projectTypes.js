@@ -61,5 +61,25 @@ module.exports = {
     name: 'vue',
     dependencies: [],
     devDependencies: []
+  },
+  expressChat: {
+    name: 'express-chat',
+    dependencies: [],
+    devDependencies: []
+  },
+  expressWithJwt: {
+    name: 'express-with-jwt',
+    dependencies: [],
+    devDependencies: []
+  },
+  expressWithPassport: {
+    name: 'express-with-passport',
+    dependencies: [],
+    devDependencies: []
+  },
+  gatsby: {
+    name: 'gatsby',
+    dependencies: [],
+    devDependencies: []
   }
 };
