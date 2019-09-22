@@ -23,6 +23,8 @@ function composeMessage(projectType) {
     case projectTypes.createReactApp.name:
       return "Creating React app with create-react-app, please wait...";
       break;
+    case projectTypes.reactNativeInit.name:
+      return "Creating ReactNative app with react-native init, please wait ...";
     default:
       return "";
   }
