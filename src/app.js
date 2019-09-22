@@ -7,6 +7,7 @@ const chalk = require("chalk");
 const logger = require("./logger");
 const projectTypes = require("./projectTypes");
 const projectCreators = require("./projectCreators");
+const { projectNameSlug } = require("./utils/helpers");
 
 async function generateProject() {
   inquirer.prompt(QUESTIONS).then(async answers => {
@@ -17,16 +18,7 @@ async function generateProject() {
     const createParams = [projectName, templatePath, projectPath];
     try {
       logger("info", projectChoice);
-      const project = projectChoice
-        .split("-")
-        .map((text, index) => {
-          if (index != 0) {
-            return text.charAt(0).toUpperCase() + text.substr(1).toLowerCase();
-          } else {
-            return text;
-          }
-        })
-        .join("");
+      const project = projectNameSlug(projectChoice);
       await projectCreators[project](...createParams);
     } catch (err) {
       if (err.code === "EEXIST") {
