@@ -17,11 +17,12 @@ module.exports = (
 ) => {
   let creator = null;
   logger('info', args);
+  logger('info', command);
   if (args) {
+    logger('info', 'here');
     creator = spawn(command, args);
-  } else {
-    creator = spawn(command);
   }
+
   creator.stdout.on('data', data => {
     logger('info', data);
   });
