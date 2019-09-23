@@ -28,6 +28,9 @@ function composeMessage(projectType) {
     case projectTypes.expressWithJwt.name:
       return "Creating Express.js app with JWT authorization, please wait..."
       break
+    case projectTypes.expressChat.name:
+      return "Creating Express.js app with socket.io, please wait..."
+      break
     default:
       return "";
   }

@@ -64,15 +64,36 @@ module.exports = {
   },
   expressChat: {
     name: 'express-chat',
-    dependencies: [],
-    devDependencies: []
+    dependencies: [
+      "@babel/runtime",
+      "babel-plugin-module-resolver",
+      "node-pre-gyp",
+      "bcryptjs",
+      "body-parser",
+      "cors",
+      "dotenv",
+      "express",
+      "helmet",
+      "mongoose",
+      'morgan',
+      'socket.io',
+      'jsonwebtoken',
+      'cors'
+    ],
+    devDependencies: [
+      "@babel/core",
+      "@babel/node",
+      "@babel/plugin-transform-runtime",
+      "@babel/preset-env",
+      "nodemon"
+    ]
   },
   expressWithJwt: {
     name: 'express-with-jwt',
     dependencies: [
       '@babel/runtime',
       'babel-plugin-module-resolver',
-      'bcrypt',
+      'bcryptjs',
       'body-parser',
       'dotenv',
       'express',
