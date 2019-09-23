@@ -69,8 +69,33 @@ module.exports = {
   },
   expressWithJwt: {
     name: 'express-with-jwt',
-    dependencies: [],
-    devDependencies: []
+    dependencies: [
+      '@babel/runtime',
+      'babel-plugin-module-resolver',
+      'bcrypt',
+      'body-parser',
+      'dotenv',
+      'express',
+      'express-list-endpoints',
+      'jsonwebtoken',
+      'keymirror',
+      'mongoose',
+      'morgan',
+      'helmet',
+      'cors'
+    ],
+    devDependencies: [
+      "@babel/cli",
+      "@babel/core",
+      "@babel/node",
+      "@babel/plugin-transform-runtime",
+      "@babel/preset-env",
+      "@babel/register",
+      "babel-polyfill",
+      "chai",
+      "mocha",
+      "nodemon"
+    ]
   },
   expressWithPassport: {
     name: 'express-with-passport',

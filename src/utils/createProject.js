@@ -16,30 +16,35 @@ module.exports = (
   args = null
 ) => {
   let creator = null;
-  if (args) {
+  if (command && args) {
     creator = spawn(command, args);
+    creator.stdout.on('data', data => {
+      logger('info', data);
+    });
+    creator.stderr.on('data', data => {
+      logger('warning', data);
+    });
+    creator.on('disconnect', data => {
+      logger('warning', 'Disconnect: ' + data);
+    });
+    creator.on('error', error => {
+      logger('error', error);
+      rimraf.sync(projectPath);
+    });
+    creator.on('exit', data => {
+      logger('success', 'Exit: + ' + data.toString());
+      proceedCreation(templatePath, projectPath, projectChoice, callback)
+    });
+  } else {
+    proceedCreation(templatePath, projectPath, projectChoice, callback)
   }
-
-  creator.stdout.on('data', data => {
-    logger('info', data);
-  });
-  creator.stderr.on('data', data => {
-    logger('warning', data);
-  });
-  creator.on('disconnect', data => {
-    logger('warning', 'Disconnect: ' + data);
-  });
-  creator.on('error', error => {
-    logger('error', error);
-    rimraf.sync(projectPath);
-  });
-  creator.on('exit', data => {
-    logger('success', 'Exit: + ' + data.toString());
-    callback();
-    utils.createProjectContents(templatePath, projectPath);
-    installDependencies(projectPath, projectChoice);
-  });
 };
+
+function proceedCreation(templatePath, projectPath, projectChoice, callback) {
+  callback();
+  utils.createProjectContents(templatePath, projectPath);
+  installDependencies(projectPath, projectChoice);
+}
 
 function installDependencies(projectPath, projectName) {
   logger('info', 'Installing dependencies. Please wait...');
