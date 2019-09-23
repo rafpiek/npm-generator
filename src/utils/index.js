@@ -26,7 +26,11 @@ function createDirectoryContents(templatePath, newProjectPath) {
     } else if (stats.isDirectory()) {
       const templateFilePath = `${templatePath}/${file}`;
       const projectFilePath = `${newProjectPath}/${file}`;
-      fs.mkdirSync(projectFilePath);
+      try {
+        fs.mkdirSync(projectFilePath);
+      } catch(e) {
+
+      }
       createDirectoryContents(templateFilePath, projectFilePath);
     }
   });

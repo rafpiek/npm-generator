@@ -25,6 +25,9 @@ function composeMessage(projectType) {
       break;
     case projectTypes.reactNativeInit.name:
       return "Creating ReactNative app with react-native init, please wait ...";
+    case projectTypes.expressWithJwt.name:
+      return "Creating Express.js app with JWT authorization, please wait..."
+      break
     default:
       return "";
   }
