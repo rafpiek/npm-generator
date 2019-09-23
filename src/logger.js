@@ -31,6 +31,9 @@ function composeMessage(projectType) {
     case projectTypes.expressChat.name:
       return "Creating Express.js app with socket.io, please wait..."
       break
+    case projectTypes.vue.name:
+      return 'Creating vue app with vuex and router, please wait....'
+      break
     default:
       return "";
   }
