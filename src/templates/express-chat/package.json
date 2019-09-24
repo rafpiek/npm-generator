@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "nodemon --exec babel-node src/app.js",
+    "build-server": "babel src --out-dir dist",
+    "build": "npm run build-server",
+    "serve": "npm run build && node dist/app.js",
+    "test": "NODE_ENV=test mocha --require @babel/register -R spec ./test/*",
+    "test-watch": "nodemon --exec 'NODE_ENV=test mocha --require @babel/register -R spec ./test/*'"
+  }
+}

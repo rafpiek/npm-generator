@@ -22,11 +22,17 @@ function createDirectoryContents(templatePath, newProjectPath) {
       if (file === ".npmignore") file = ".gitignore";
       const contents = fs.readFileSync(origFilePath, "utf8");
       const writePath = filePath(newProjectPath, file);
-      fs.writeFileSync(writePath, contents, "utf8");
+      try {
+        fs.writeFileSync(writePath, contents, "utf8");
+      } catch(e) {}
     } else if (stats.isDirectory()) {
       const templateFilePath = `${templatePath}/${file}`;
       const projectFilePath = `${newProjectPath}/${file}`;
-      fs.mkdirSync(projectFilePath);
+      try {
+        fs.mkdirSync(projectFilePath);
+      } catch(e) {
+
+      }
       createDirectoryContents(templateFilePath, projectFilePath);
     }
   });

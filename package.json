@@ -1,4 +1,6 @@
 {
+  "name": "npm-generator",
+  "version": "0.0.1",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -6,7 +8,8 @@
     "generate": "./index.js"
   },
   "dependencies": {
-    "inquirer": "^7.0.0"
+    "inquirer": "^7.0.0",
+    "rimraf": "^3.0.0"
   },
   "devDependencies": {
     "chalk": "^2.4.2",

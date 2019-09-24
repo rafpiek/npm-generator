@@ -1,0 +1,51 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './app';
+import * as serviceWorker from './serviceWorker';
+import {ThemeProvider} from "styled-components";
+import {Provider} from "react-redux";
+import {persistor, store} from "./redux/store";
+import {PersistGate} from "redux-persist/integration/react";
+import GlobalStyle from 'config/GlobalStyle'
+
+import theme from 'config/theme'
+import {Locales} from "./utils";
+
+require('dotenv').config()
+
+function Root() {
+  window.store = store
+  window.persistor = persistor
+  Locales.init()
+
+  const appName = 'Todoardo'
+  const appInfo = {
+    name: appName
+  }
+
+  return (
+    <ThemeProvider theme={theme} appInfo={appInfo}>
+      <>
+        <GlobalStyle/>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <App />
+          </PersistGate>
+        </Provider>
+      </>
+    </ThemeProvider>  );
+}
+
+
+
+
+
+
+
+
+
+
+
+ReactDOM.render(<Root />, document.getElementById('root'));
+
+serviceWorker.unregister();
