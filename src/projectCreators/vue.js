@@ -7,7 +7,7 @@ module.exports = (projectName, templatePath, projectPath) => {
   const command = `vue`
   const args = ['create', `--preset`, `${templatePath}/vuepreset`, `-b`, `${projectName}`]
   const callback = () => {
-    // rimraf.sync(`${projectPath}/src`);
+    rimraf.sync(`${projectPath}/src`);
   }
   logger('success', 'Creating vue app')
   createProject(
